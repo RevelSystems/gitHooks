@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+GIT_DIR=$(git rev-parse --git-dir)
+
+$GIT_DIR/hooks/commit-msg-revel "$@"
+
+if [ -f $GIT_DIR/hooks/my-commit-msg ]
+then
+    $GIT_DIR/hooks/my-commit-msg "$@"
+fi
+

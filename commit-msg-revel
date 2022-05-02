@@ -1,0 +1,6 @@
+#!/bin/sh
+
+test "" != "$(grep '\([A-Z][A-Z0-9]*-[0-9]\|[Mm]erge\)' "$1")" || {
+	echo >&2 "Aborting commit. Your commit message is missing either a JIRA Issue ('CORE-123') or 'Merge'"
+	exit 1
+}
